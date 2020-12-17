@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create(email: 'D.Wilson@nhl.com', password: 'SJ', name: 'Doug Wilson')
+League.create(name: 'NHL', sport: 'Hockey')
+Team.create(city: 'San Jose', name: 'Sharks', coach: 'Bob Boughner', user_id: 1, league_id: 1)
+Player.create(name: 'Logan Couture', number: 39, hometown: 'Ontario, Canada', team_id: 1)
