@@ -8,6 +8,12 @@ class UsersController < ApplicationController
     end
 
     def create
+        #create user
+        #if user is saved
+            # redirect to user show page
+        #else
+            # give error messages and redirect to signup page
+        #end 
     end
 
     private
