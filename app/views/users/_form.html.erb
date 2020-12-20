@@ -1,1 +1,6 @@
-This is the form to create a User
+<%= form_for @user do |f| %>
+    Email: <%= f.text_field :email %></br>
+    Password: <%= f.password_field :password %></br>
+    Name: <%= f.text_field :name %></br>
+    <%= f.submit %>
+<% end %>
