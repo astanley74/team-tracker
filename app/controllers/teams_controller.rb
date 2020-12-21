@@ -3,4 +3,5 @@ class TeamsController < ApplicationController
         @team = Team.new
     end
 
+    
 end
