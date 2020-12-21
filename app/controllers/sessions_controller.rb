@@ -12,4 +12,9 @@ class SessionsController < ApplicationController
             redirect_to new_user_path
         end
     end
+
+    def destroy
+        session.delete :user_id
+        redirect_to '/'
+    end
 end
