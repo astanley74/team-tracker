@@ -1,1 +1,11 @@
-<%= @user.name %>
+<h1>Welcome to Team Tracker <%= @user.name %>.</h1><br>
+
+<% @user.teams.each do |team| %>
+    League: <%= team.league.name %></br>
+    Team: <%= link_to "#{team.city} #{team.name}", user_team_path(team.user, team)%>
+<% end %>
+
+<br>
+<br>
+
+<%= link_to "signout", logout_path %>
