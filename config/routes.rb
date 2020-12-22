@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :teams
   end
 
+  resources :teams
+
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'

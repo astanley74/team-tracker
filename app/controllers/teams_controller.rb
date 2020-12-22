@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
         @team = Team.new(team_params)
 
         if @team.save
+            binding.pry
             redirect_to user_team_path(@user, @team)
         else
             render :new
