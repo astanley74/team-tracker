@@ -1,4 +1,4 @@
-<h1><%= @league.name %>
-<%= @league.teams.each do |team| %>
-
+<h1><%= @league.name %><br></h1>
+<% @league.teams.each do |team| %>
+    <h2><%= link_to "#{team.city} #{team.name}", user_team_path(team.user, team) %></h2>
 <% end %>
