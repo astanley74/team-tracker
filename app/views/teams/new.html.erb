@@ -1,0 +1,7 @@
+<%= form_for @team do |f| %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.collection_select :league, League.all, :id, :name %>
+    <%= f.submit %>
+<% end %>
+
+<%= f.hidden_field :post_id, value: @post.id %>
