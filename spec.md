@@ -20,7 +20,8 @@ Specs:
     - User can login
 - [x] Include logout
     -User can logout
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+    - User can signup and login with Google
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
     - Nested resource show page for users/:id/teams/:id and teams/:id/players/:id
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
