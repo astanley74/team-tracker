@@ -11,13 +11,13 @@
 <br>
 <br>
 
-<%= link_to "Add a new player", new_team_player_path(@team)%><br><br>
+<%= button_to "Add Player", new_team_player_path(@team), method: "get" %><br><br>
 
-<%= link_to "Edit Team", edit_user_team_path(current_user, @team)%><br><br>
+<%= button_to "Edit Team", edit_user_team_path(current_user, @team), method: "get" %><br><br>
 
 <%= form_tag user_team_path(current_user, @team), method: "delete" %>
 <%= submit_tag "Delete Team" %><br><br>
 
-<%= link_to "Home", user_path(current_user) %><br><br>
+<%= button_to "Home", user_path(current_user), method: "get"  %><br><br>
 
-<%= link_to "Log Out", logout_path %>
+<%= button_to "Log Out", logout_path, method: "get"  %>
