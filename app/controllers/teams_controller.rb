@@ -33,6 +33,11 @@ class TeamsController < ApplicationController
         redirect_to user_team_path(@user, @team)
     end
 
+    def destroy
+        Team.find(params[:id]).destroy
+        redirect_to user_path(current_user)
+    end
+
     private
         def team_params
             params.require(:team).permit(:city, :name, :coach, :user_id, :league_id)
