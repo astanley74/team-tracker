@@ -6,9 +6,11 @@ class PlayersController < ApplicationController
     end
 
     def create
+        binding.pry
+        @team = Team.find(player_params[:team_id])
         @player = Player.new(player_params)
         if @player.save
-            redirect_to team_player_path(@player)
+            redirect_to team_player_path(@team, @player)
         else
             redirect_to new_team_player_path
         end

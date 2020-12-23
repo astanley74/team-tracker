@@ -1,1 +1,9 @@
-<h1><%= @team.name %></h1> 
+<h1><%= @team.name %></h1>
+<% @team.players.each do |player| %>
+    <%= link_to "#{player.number}. #{player.name}", team_player_path(@team, player)%><br><br>
+<% end %>
+
+<br>
+<br>
+
+<%= link_to "Add a new player", new_team_player_path(@team)%>
