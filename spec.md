@@ -12,7 +12,8 @@ Specs:
     - User has_many Leagues through Teams, League has_many Users through Teams
 - [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity) 
     - Team is the join table and allows the user to submit the city, name and coach for the team. 
-- [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+- [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+    - Included validations for User model, Player model, and Team model
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 - [x] Include signup
     - User can signup
@@ -26,7 +27,8 @@ Specs:
     - Nested resource show page for users/:id/teams/:id and teams/:id/players/:id
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
     - Nested resource new form for users/:id/teams/new and teams/:id/players/new
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
+    - Included form display of validation errors for creating a new user, team and player. Also for editing a user, team or player
 
 Confirm:
 - [ ] The application is pretty DRY
