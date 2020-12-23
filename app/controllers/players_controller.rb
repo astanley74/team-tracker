@@ -33,6 +33,9 @@ class PlayersController < ApplicationController
         redirect_to team_player_path(@team, @player)
     end
 
+    def destroy
+    end
+
 
     private
         def player_params
