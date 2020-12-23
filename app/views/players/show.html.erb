@@ -1,2 +1,7 @@
 <h1><%= @player.number %>. <%= @player.name %></h1>
 <h2>Hometown: <%= @player.hometown %></h2>
+
+<br>
+<br>
+
+<%= link_to "Edit Player", edit_team_player_path(@team, @player)%><br><br>
