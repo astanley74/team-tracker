@@ -1,24 +1,21 @@
 class TeamsController < ApplicationController
     def new
-        @team = Team.new
-        @user = User.find_by_id(session[:user_id])
+        @team = Team.new(user_id: params[:user_id])
     end
 
     def create
-        @user = User.find_by_id(session[:user_id])
         @team = Team.new(team_params)
 
         if @team.save
             # binding.pry
-            redirect_to user_team_path(@user, @team)
+            redirect_to user_team_path(current_user, @team)
         else
             render :new
         end
     end
 
     def show
-        @team = Team.find(params[:id])
-        @user = User.find_by_id(session[:user_id])
+        @team = User.find(params[:user_id]).teams.find(params[:id])
     end
 
     def edit
