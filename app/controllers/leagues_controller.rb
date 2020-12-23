@@ -1,4 +1,5 @@
 class LeaguesController < ApplicationController
+    before_action :verified_user
 
     def index
         @leagues = League.all

@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+    before_action :verified_user
+
     def new
         @team = Team.new(user_id: params[:user_id])
     end

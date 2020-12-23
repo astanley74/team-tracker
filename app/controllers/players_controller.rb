@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+    before_action :verified_user
+
 
     def new
         @player = Player.new

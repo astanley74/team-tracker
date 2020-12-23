@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :verified_user
 
     def new
         if session[:user_id]
