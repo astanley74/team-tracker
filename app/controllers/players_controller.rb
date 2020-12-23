@@ -11,7 +11,8 @@ class PlayersController < ApplicationController
         if @player.save
             redirect_to team_player_path(@team, @player)
         else
-            redirect_to new_team_player_path
+            flash[:error] = @player.errors.full_messages
+            redirect_to new_team_player_path(@team)
         end
     end
 
@@ -28,8 +29,12 @@ class PlayersController < ApplicationController
     def update
         @team = Team.find(player_params[:team_id])
         @player = Player.find(params[:id])
-        @player.update(player_params)
-        redirect_to team_player_path(@team, @player)
+        if @player.update(player_params)
+            redirect_to team_player_path(@team, @player)
+        else
+            flash[:error] = @player.errors.full_messages
+            redirect_to edit_team_player_path(@team, @player)
+        end
     end
 
     def destroy
