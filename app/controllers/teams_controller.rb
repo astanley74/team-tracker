@@ -20,7 +20,11 @@ class TeamsController < ApplicationController
         @team = Team.find(params[:id])
     end
 
+    def edit
+    end
+
     def update
+        @team = Team.find(params[:id])
     end
 
     private
