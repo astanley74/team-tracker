@@ -10,7 +10,8 @@ class TeamsController < ApplicationController
             # binding.pry
             redirect_to user_team_path(current_user, @team)
         else
-            render :new
+            flash[:error] = @team.errors.full_messages
+            redirect_to new_user_team_path(current_user)
         end
     end
 
@@ -25,8 +26,12 @@ class TeamsController < ApplicationController
 
     def update
         @team = Team.find(params[:id])
-        @team.update(team_params)
-        redirect_to user_team_path(current_user, @team)
+        if @team.update(team_params)
+            redirect_to user_team_path(current_user, @team)
+        else
+            flash[:error] = @team.errors.full_messages
+            redirect_to edit_user_team_path(current_user, @team)
+        end
     end
 
     def destroy

@@ -1,5 +1,11 @@
 <%= form_for @team do |f| %>
 
+    <% if flash[:error] %>
+        <% flash[:error].each do |error| %>
+            <%= error %><br>
+        <% end %>
+    <% end %>
+
     <%= f.label :city %>
     <%= f.text_field :city %><br><br>
 
