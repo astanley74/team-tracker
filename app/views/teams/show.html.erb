@@ -16,4 +16,6 @@
 <%= link_to "Edit Team", edit_user_team_path(@user, @team)%><br><br>
 
 <%= form_tag user_team_path(@user, @team), method: "delete" %>
-<%= submit_tag "Delete Team" %>
+<%= submit_tag "Delete Team" %><br><br>
+
+<%= link_to "Home", user_path(current_user) %>
