@@ -7,4 +7,8 @@
 
     <%= f.label :homewtown %>
     <%= f.text_field :hometown %>
+
+    <%= f.hidden_field :team_id, value: @team.id %>
+
+    <%= f.submit %>
 <% end %>

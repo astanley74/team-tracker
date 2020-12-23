@@ -2,6 +2,7 @@ class PlayersController < ApplicationController
 
     def new
         @player = Player.new
+        @team = Team.find(params[:team_id])
     end
 
     def create
@@ -11,6 +12,10 @@ class PlayersController < ApplicationController
         else
             redirect_to new_team_player_path
         end
+    end
+
+    def show
+        @player = Player.find(params[:id])
     end
 
 
