@@ -4,5 +4,6 @@ class Team < ActiveRecord::Base
     belongs_to :league
 
     validates_presence_of :city, :name, :coach
+    validates :city, uniqueness: {scope: :league_id}
     validates :name, :coach, uniqueness: true
 end
