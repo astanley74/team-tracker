@@ -3,4 +3,6 @@
     <h2><%= link_to "#{team.city} #{team.name}", user_team_path(team.user, team) %></h2>
 <% end %>
 
-<%= link_to "Home", user_path(current_user) %>
+<%= link_to "Home", user_path(current_user) %><br><br>
+
+<%= link_to "Log Out", logout_path %>

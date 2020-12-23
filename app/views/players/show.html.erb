@@ -9,4 +9,6 @@
 <%= form_tag team_player_path(@team, @player), method: "delete" %>
 <%= submit_tag "Delete Player" %><br><br>
 
-<%= link_to "Back to Team", user_team_path(current_user, @team) %>
+<%= link_to "Back to Team", user_team_path(current_user, @team) %><br><br>
+
+<%= link_to "Log Out", logout_path %>
