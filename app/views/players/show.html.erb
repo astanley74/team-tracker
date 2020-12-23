@@ -7,4 +7,6 @@
 <%= link_to "Edit Player", edit_team_player_path(@team, @player)%><br><br>
 
 <%= form_tag team_player_path(@team, @player), method: "delete" %>
-<%= submit_tag "Delete Player" %>
+<%= submit_tag "Delete Player" %><br><br>
+
+<%= link_to "Back to Team", user_team_path(current_user, @team) %>
