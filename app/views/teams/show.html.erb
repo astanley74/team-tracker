@@ -1,4 +1,9 @@
 <h1><%= @team.name %></h1>
+
+<h2>Coach:</h2>
+<%= @team.coach%><br>
+
+<h2>Players:</h2><br>
 <% @team.players.each do |player| %>
     <%= link_to "#{player.number}. #{player.name}", team_player_path(@team, player)%><br><br>
 <% end %>
@@ -6,4 +11,5 @@
 <br>
 <br>
 
-<%= link_to "Add a new player", new_team_player_path(@team)%>
+<%= link_to "Add a new player", new_team_player_path(@team)%><br><br>
+<%= link_to "Edit Team", edit_user_team_path(@user, @team)%>

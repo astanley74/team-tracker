@@ -18,6 +18,7 @@ class TeamsController < ApplicationController
 
     def show
         @team = Team.find(params[:id])
+        @user = User.find_by_id(session[:user_id])
     end
 
     def edit
@@ -26,6 +27,7 @@ class TeamsController < ApplicationController
     end
 
     def update
+        @user = User.find_by_id(session[:user_id])
         @team = Team.find(params[:id])
         @team.update(team_params)
         redirect_to user_team_path(@user, @team)
