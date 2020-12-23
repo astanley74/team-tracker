@@ -13,6 +13,9 @@ class SessionsController < ApplicationController
         end
     end
 
+    def omniauth
+    end
+
     def destroy
         session.delete :user_id
         redirect_to '/'

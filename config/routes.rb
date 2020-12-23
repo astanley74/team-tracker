@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :leagues
 
+  get '/auth/:provider/callback', to: 'sessions#omniauth'
+
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
 
