@@ -9,11 +9,9 @@ class TeamsController < ApplicationController
         @team = Team.new(team_params)
 
         if @team.save
-            binding.pry
             redirect_to user_team_path(current_user, @team)
         else
-            flash[:error] = @team.errors.full_messages
-            redirect_to new_user_team_path(current_user)
+            render :new
         end
     end
 

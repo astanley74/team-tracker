@@ -1,23 +1,19 @@
 <h1><%= @team.city %> <%= @team.name %></h1>
 
 <h2>Coach:</h2>
-<%= @team.coach%><br>
+<h3><%= @team.coach%></h3><br>
 
 <h2>Players:</h2><br>
 <% @team.players.each do |player| %>
-    <%= link_to "#{player.number}. #{player.name}", team_player_path(@team, player)%><br><br>
+    <h3><%= link_to name_and_number(player), team_player_path(@team, player)%></h3><br><br>
 <% end %>
 
 <br>
 <br>
 
-<%= link_to "Add Player", new_team_player_path(@team)%><br><br>
+<%= link_to "Add Player", new_team_player_path(@team), class: "button" %><br><br><br>
 
-<%= link_to "Edit Team", edit_user_team_path(current_user, @team)%><br><br>
+<%= link_to "Edit Team", edit_user_team_path(current_user, @team), class: "button"%><br><br>
 
 <%= form_tag user_team_path(current_user, @team), method: "delete" %>
-<%= submit_tag "Delete Team" %><br><br>
-
-<%= link_to "Home", user_path(current_user) %><br><br>
-
-<%= link_to "Log Out", logout_path %>
+<%= submit_tag "Delete Team", class: "button" %><br><br>

@@ -11,6 +11,25 @@
   </head>
 
   <body>
-    <%= yield %>
+  <% if current_user %>
+    <div class="topnav">
+      <%= link_to "Home", user_path(current_user) %>
+      <%= link_to "Add Team", new_user_team_path(current_user) %>
+      <%= link_to "Log Out", logout_path %>
+    </div>
+  <% else %>
+    <div class="topnav">
+      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Sign In", signin_path %>
+      <%= link_to "Log In with Google", '/auth/google_oauth2', method: "post" %>
+    </div>
+  <% end %>
+    <div class="wrapper">
+      <%= yield %><br>
+
+      <footer class="branding">
+        <small>&copy; 2020 <strong>TeamTracker</strong></small>
+      </footer>
+    </div>
   </body>
 </html>

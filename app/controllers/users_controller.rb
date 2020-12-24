@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :verified_user
+    skip_before_action :verified_user, only: [:new, :create]
 
     def new
         if session[:user_id]
@@ -11,14 +12,6 @@ class UsersController < ApplicationController
     end
 
     def create
-
-        #create user
-        #if user is saved
-            # redirect to user show page
-        #else
-            # give error messages and redirect to signup page
-        #end 
-
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id

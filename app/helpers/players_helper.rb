@@ -1,8 +1,7 @@
 module PlayersHelper
 
-    def current_team
-        @team = Team.find(params[:team_id])
+    def name_and_number(player)
+        player.number.to_s + ". " + player.name
     end
-
 
 end
