@@ -2,11 +2,11 @@ class TeamsController < ApplicationController
     before_action :verified_user
 
     def new
-        @team = Team.new(user_id: params[:user_id])
+        @team = current_user.teams.build
     end
 
     def create
-        @team = Team.new(team_params)
+        @team = current_user.teams.build(team_params)
 
         if @team.save
             redirect_to user_team_path(current_user, @team)
@@ -20,8 +20,7 @@ class TeamsController < ApplicationController
     end
 
     def edit
-        @user = User.find(params[:user_id])
-        @team = @user.teams.find(params[:id])
+        @team = current_user.teams.find(params[:id])
     end
 
     def update
@@ -29,8 +28,7 @@ class TeamsController < ApplicationController
         if @team.update(team_params)
             redirect_to user_team_path(current_user, @team)
         else
-            flash[:error] = @team.errors.full_messages
-            redirect_to edit_user_team_path(current_user, @team)
+            render :edit
         end
     end
 
