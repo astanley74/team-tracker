@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :verified_user
+    before_action :correct_user, only: [:show]
     skip_before_action :verified_user, only: [:new, :create]
 
     def new
@@ -23,11 +24,17 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
+
     end
 
     private
         def user_params
             params.require(:user).permit(:email, :password, :name)
         end
+
+        def correct_user
+            @user = User.find(params[:id])
+            redirect_to user_path(current_user) unless current_user.id == @user.id
+        end
+
 end

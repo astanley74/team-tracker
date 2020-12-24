@@ -58,7 +58,7 @@
   h3 {
     font-size: 18px;
     line-height: 36px;
-    text-align: center;
+    text-align: left;
   }
 
   h4 {
@@ -144,4 +144,22 @@
   .field_with_errors input {
       border-color: red;
       color: red;
+  }
+
+  .error {
+    color: #ffffff;
+    text-align: center;
+    font-size: 17px;
+    margin-bottom: 20px;
+    animation-name: flash;
+    animation-duration: 0.7s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+  }
+
+  @keyframes flash {
+    from {color: red;}
+    to {color: black;}
   }

@@ -1,11 +1,15 @@
 <h1><%= @team.city %> <%= @team.name %></h1>
 
 <h2>Coach:</h2>
-<h3><%= @team.coach%></h3><br>
+<ul>
+    <li><h3><%= @team.coach%></h3></li>
+</ul>
 
 <h2>Players:</h2><br>
 <% @team.players.each do |player| %>
-    <h3><%= link_to name_and_number(player), team_player_path(@team, player)%></h3><br><br>
+    <ul>
+        <li><h3><%= link_to name_and_number(player), team_player_path(@team, player)%></h3></li>
+    </ul>
 <% end %>
 
 <br>
