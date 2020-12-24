@@ -3,8 +3,7 @@ class PlayersController < ApplicationController
 
 
     def new
-        @player = Player.new
-        @team = Team.find(params[:team_id])
+        @player = Player.new(team_id: params[:team_id])
     end
 
     def create
@@ -12,8 +11,7 @@ class PlayersController < ApplicationController
         if @player.save
             redirect_to team_player_path(@player.team, @player)
         else
-            flash[:error] = @player.errors.full_messages
-            redirect_to new_team_player_path(@team)
+            render :new
         end
     end
 
