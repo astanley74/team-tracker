@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
 
 
     def new
-        @player = Player.new(team_id: params[:team_id])
+        @player = current_team.players.build
     end
 
     def create
@@ -30,8 +30,7 @@ class PlayersController < ApplicationController
         if @player.update(player_params)
             redirect_to team_player_path(@player.team, @player)
         else
-            flash[:error] = @player.errors.full_messages
-            redirect_to edit_team_player_path(@team, @player)
+            render :edit
         end
     end
 
@@ -45,5 +44,9 @@ class PlayersController < ApplicationController
     private
         def player_params
             params.require(:player).permit(:name, :number, :hometown, :team_id)
+        end
+
+        def current_team
+            @team = Team.find(params[:team_id])
         end
 end

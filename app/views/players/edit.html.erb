@@ -1,10 +1,8 @@
-<%= form_for @player do |f| %>
+<%= render partial: '/layouts/errors', locals: {object: @player} %>
 
-    <% if flash[:error] %>
-        <% flash[:error].each do |error| %>
-            <%= error %><br>
-        <% end %>
-    <% end %>
+    <%= flash[:error] %>
+    
+<%= form_for @player do |f| %>
 
     <%= f.label :name%>
     <%= f.text_field :name %>
@@ -15,7 +13,7 @@
     <%= f.label :homewtown %>
     <%= f.text_field :hometown %>
 
-    <%= f.hidden_field :team_id, value: @team.id %>
+    <%= f.hidden_field :team_id, value: @player.team_id %>
 
     <%= f.submit %>
 <% end %>
