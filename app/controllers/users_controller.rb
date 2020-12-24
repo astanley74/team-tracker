@@ -5,8 +5,7 @@ class UsersController < ApplicationController
 
     def new
         if session[:user_id]
-            @user = User.find(session[:user_id])
-            redirect_to user_path(@user)
+            redirect_to user_path(current_user)
         else
             @user = User.new
         end
@@ -18,13 +17,11 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            flash[:error] = @user.errors.full_messages
             redirect_to signup_path
         end
     end
 
     def show
-
     end
 
     private
