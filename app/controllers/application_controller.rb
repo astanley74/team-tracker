@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
 
     def home
+        redirect_to user_path(current_user) unless !current_user
     end
 
     private
