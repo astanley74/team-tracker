@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
     before_action :verified_user
+    before_action :current_team_player, only: [:show, :edit]
 
 
     def new
@@ -7,8 +8,7 @@ class PlayersController < ApplicationController
     end
 
     def create
-        @player = Player.new(player_params)
-        if @player.save
+        if @player = Player.create(player_params)
             redirect_to team_player_path(@player.team, @player)
         else
             render :new
@@ -16,13 +16,9 @@ class PlayersController < ApplicationController
     end
 
     def show
-        @player = Player.find(params[:id])
-        @team = Team.find(params[:team_id])
     end
 
     def edit
-        @team = Team.find(params[:team_id])
-        @player = Player.find(params[:id])
     end
 
     def update
@@ -47,6 +43,11 @@ class PlayersController < ApplicationController
         end
 
         def current_team
+            @team = Team.find(params[:team_id])
+        end
+
+        def current_team_player
+            @player = Player.find(params[:id])
             @team = Team.find(params[:team_id])
         end
 end
