@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
     before_action :verified_user
     before_action :current_team_player, only: [:show, :edit]
+    before_action :authenticate_team, only: [:new, :edit, :update]
 
 
     def new
@@ -19,6 +20,7 @@ class PlayersController < ApplicationController
     end
 
     def edit
+
     end
 
     def update
@@ -49,5 +51,9 @@ class PlayersController < ApplicationController
         def current_team_player
             @player = Player.find(params[:id])
             @team = Team.find(params[:team_id])
+        end
+
+        def authenticate_team
+            redirect_to user_path(current_user) unless current_user.id == current_team.user_id
         end
 end

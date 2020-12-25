@@ -1,6 +1,4 @@
 <h1>All Leagues</h1>
-<h2>
     <% @leagues.each do |league| %>
-        <%= link_to league.name, league_path(league) %>
+        <h2><%= link_to league.name, league_path(league) %></h2>
     <% end %>
-</h2>

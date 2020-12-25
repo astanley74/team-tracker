@@ -1,1 +1,32 @@
-<%= render "form" %>
+<%= render partial: '/layouts/errors', locals: {object: @team} %>
+
+<%= form_for @team do |f| %>
+
+    <%= f.label :city %>
+    <%= f.text_field :city %><br><br>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %><br><br>
+
+    <%= f.label :coach %>
+    <%= f.text_field :coach %><br><br>
+
+    <%= f.hidden_field :user_id, value: @team.user_id %>
+
+    <%= f.collection_select :league_id, League.all, :id, :name %><br><br>
+
+    <% 4.times do %>
+        <%= f.fields_for :players, @team.players.build do |player| %>
+            <%= player.label :name %>
+            <%= player.text_field :name %>
+
+            <%= player.label :number %>
+            <%= player.text_field :number %>
+
+            <%= player.label :homewtown %>
+            <%= player.text_field :hometown %><br><br>
+
+        <% end %>
+        <% end %>
+    <%= f.submit %>
+<% end %>

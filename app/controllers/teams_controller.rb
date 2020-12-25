@@ -7,7 +7,6 @@ class TeamsController < ApplicationController
     end
 
     def create
-        binding.pry
         @team = current_user.teams.create(team_params)
 
         if @team.save
@@ -22,7 +21,12 @@ class TeamsController < ApplicationController
     end
 
     def edit
-        @team = User.find(params[:user_id]).teams.find(params[:id])
+        if current_user != Team.find(params[:id]).user
+            redirect_to(current_user)
+            flash[:error] = "You must be the owner of the team to edit!"
+        else
+            @team = User.find(params[:user_id]).teams.find(params[:id])
+        end
     end
 
     def update
