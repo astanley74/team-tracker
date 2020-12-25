@@ -7,7 +7,8 @@ class TeamsController < ApplicationController
     end
 
     def create
-        @team = current_user.teams.build(team_params)
+        binding.pry
+        @team = current_user.teams.create(team_params)
 
         if @team.save
             redirect_to user_team_path(current_user, @team)
@@ -44,7 +45,7 @@ class TeamsController < ApplicationController
 
     private
         def team_params
-            params.require(:team).permit(:city, :name, :coach, :user_id, :league_id)
+            params.require(:team).permit(:city, :name, :coach, :user_id, :league_id, players_attributes: [:name, :number, :hometown, :team_id])
         end
 
         def users_team

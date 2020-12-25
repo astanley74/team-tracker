@@ -7,6 +7,8 @@ class Team < ActiveRecord::Base
     validates :city, uniqueness: {scope: :league_id}
     validates :name, :coach, uniqueness: true
 
+    accepts_nested_attributes_for :players
+
     # def self.order_by_name
     #     order(name: :desc)
     # end
