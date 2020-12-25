@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
     before_action :verified_user
-    before_action :users_team, only: [:new, :edit, :update]
+    before_action :users_team, only: [:new]
 
     def new
         @team = current_user.teams.build

@@ -15,9 +15,11 @@
 <br>
 <br>
 
-<%= link_to "Add Player", new_team_player_path(@team), class: "button" %><br><br><br>
+<% if current_user == @team.user %>
+    <%= link_to "Add Player", new_team_player_path(@team), class: "button" %><br><br><br>
 
-<%= link_to "Edit Team", edit_user_team_path(current_user, @team), class: "button"%><br><br>
+    <%= link_to "Edit Team", edit_user_team_path(current_user, @team), class: "button"%><br><br>
 
-<%= form_tag user_team_path(current_user, @team), method: "delete" %>
-<%= submit_tag "Delete Team", class: "button" %><br><br>
+    <%= form_tag user_team_path(current_user, @team), method: "delete" %>
+    <%= submit_tag "Delete Team", class: "button" %><br><br>
+<% end %>

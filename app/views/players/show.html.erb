@@ -3,10 +3,11 @@
 
 <br>
 <br>
+<% if current_user == @player.team.user %>
+    <%= link_to "Edit Player", edit_team_player_path(@team, @player), class: "button" %><br><br>
 
-<%= link_to "Edit Player", edit_team_player_path(@team, @player), class: "button" %><br><br>
+    <%= form_tag team_player_path(@team, @player), method: "delete" %>
+    <%= submit_tag "Delete Player", class: "button" %><br><br>
+<%end%>
 
-<%= form_tag team_player_path(@team, @player), method: "delete" %>
-<%= submit_tag "Delete Player", class: "button" %><br><br>
-
-<%= link_to "Back to Team", user_team_path(current_user, @team), class: "button" %><br><br>
+<%= link_to "Back to Team", user_team_path(@team.user, @team), class: "button" %><br><br>
