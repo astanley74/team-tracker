@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     before_action :verified_user
-    before_action :correct_user, only: [:show]
     skip_before_action :verified_user, only: [:new, :create]
+    before_action :correct_user, only: [:show]
 
     def new
         if session[:user_id]
@@ -12,8 +12,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(user_params)
-        if @user.save
+        if @user = User.create(user_params)
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
