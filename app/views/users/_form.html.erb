@@ -2,8 +2,14 @@
 
 <%= form_for @user, url: signup_path do |f| %>
 
-    Email: <%= f.text_field :email %></br>
-    Password: <%= f.password_field :password %></br>
-    Name: <%= f.text_field :name %></br>
+    <%= f.label :email %>
+    <%= f.text_field :email %><br><br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %><br><br>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %><br><br>
+
     <%= f.submit %>
 <% end %>
