@@ -7,8 +7,8 @@
          
         <ul>
         <% object.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-            <% end %>
+            <li><div class="error"><%= msg %></div></li>
+        <% end %>
         </ul>
     </div>
 <% end %>

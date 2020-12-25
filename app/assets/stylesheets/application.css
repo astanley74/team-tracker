@@ -146,9 +146,14 @@
       color: red;
   }
 
+  @keyframes flash {
+    from {color: red;}
+    to {color: black;}
+  }
+
   .error {
     color: #ffffff;
-    text-align: center;
+    text-align: left;
     font-size: 17px;
     margin-bottom: 20px;
     animation-name: flash;
@@ -157,9 +162,4 @@
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-play-state: running;
-  }
-
-  @keyframes flash {
-    from {color: red;}
-    to {color: black;}
   }

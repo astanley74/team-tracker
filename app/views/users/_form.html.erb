@@ -1,7 +1,5 @@
 <%= render partial: '/layouts/errors', locals: {object: @user} %>
 
-    <%= flash[:error] %>
-
 <%= form_for @user, url: signup_path do |f| %>
 
     Email: <%= f.text_field :email %></br>

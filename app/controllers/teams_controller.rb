@@ -2,7 +2,12 @@ class TeamsController < ApplicationController
     before_action :verified_user
 
     def new
-        @team = current_user.teams.build
+        if current_user == User.find(params[:user_id])
+            @team = current_user.teams.build
+        else
+            redirect_to user_path(current_user)
+            flash[:error] = "You must be the correct user to add a team"
+        end
     end
 
     def create
