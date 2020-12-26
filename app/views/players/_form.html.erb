@@ -1,0 +1,19 @@
+<%= render partial: '/layouts/errors', locals: {object: @player} %>
+
+    <%= flash[:error] %>
+
+<%= form_for @player do |f| %>
+
+    <%= f.label :name%>
+    <%= f.text_field :name %><br><br>
+
+    <%= f.label :number %>
+    <%= f.text_field :number %><br><br>
+
+    <%= f.label :homewtown %>
+    <%= f.text_field :hometown %><br><br>
+
+    <%= f.hidden_field :team_id, value: @player.team_id%>
+
+    <%= f.submit %>
+<% end %>

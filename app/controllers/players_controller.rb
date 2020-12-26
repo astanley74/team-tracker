@@ -1,7 +1,6 @@
 class PlayersController < ApplicationController
     before_action :verified_user
-    before_action :current_team_player, only: [:show, :edit]
-    before_action :authenticate_team, only: [:new, :edit, :update]
+    before_action :authenticate_team, only: [:new, :edit, :destroy]
 
 
     def new
@@ -17,14 +16,15 @@ class PlayersController < ApplicationController
     end
 
     def show
+        @player = find_player
     end
 
     def edit
-
+        @player = find_player
     end
 
     def update
-        @player = Player.find(params[:id])
+        @player = find_player
         if @player.update(player_params)
             redirect_to team_player_path(@player.team, @player)
         else
@@ -34,7 +34,7 @@ class PlayersController < ApplicationController
 
     def destroy
         Player.find(params[:id]).destroy
-        @team = Team.find(params[:team_id])
+        @team = current_team
         redirect_to user_team_path(current_user, @team)
     end
 
@@ -45,15 +45,17 @@ class PlayersController < ApplicationController
         end
 
         def current_team
-            @team = Team.find(params[:team_id])
+            Team.find(params[:team_id])
         end
 
-        def current_team_player
-            @player = Player.find(params[:id])
-            @team = Team.find(params[:team_id])
+        def find_player
+            Player.find(params[:id])
         end
 
         def authenticate_team
-            redirect_to user_path(current_user) unless current_user.id == current_team.user_id
+            unless current_user.id == current_team.user_id
+                redirect_to user_path(current_user) 
+                flash[:error] = "Only the owner can add, edit, or delete players from a team!"
+            end
         end
 end

@@ -1,8 +1,9 @@
 class TeamsController < ApplicationController
     before_action :verified_user
-    before_action :users_team, only: [:new, :edit, :destroy]
+    before_action :users_team, only: [:edit, :destroy]
 
     def new
+        redirect_to user_path(current_user) unless current_user == correct_user
         @team = current_user.teams.build
     end
 
@@ -54,4 +55,9 @@ class TeamsController < ApplicationController
         def find_team
             Team.find(params[:id])
         end
+
+        def correct_user
+            User.find(params[:user_id])
+        end
+
 end
