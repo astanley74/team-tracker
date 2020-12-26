@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
     before_action :verified_user
-    before_action :users_team, only: [:new]
+    before_action :users_team, only: [:new, :edit, :destroy]
 
     def new
         @team = current_user.teams.build
@@ -17,19 +17,15 @@ class TeamsController < ApplicationController
     end
 
     def show
-        @team = User.find(params[:user_id]).teams.find(params[:id])
+        @team = find_team
     end
 
     def edit
-        if current_user != Team.find(params[:id]).user
-            redirect_to(current_user)
-            flash[:error] = "You must be the owner of the team to edit!"
-        else
-            @team = User.find(params[:user_id]).teams.find(params[:id])
-        end
+        @team = find_team
     end
 
     def update
+        @team = find_team
         if @team.update(team_params)
             redirect_to user_team_path(current_user, @team)
         else
@@ -38,13 +34,9 @@ class TeamsController < ApplicationController
     end
 
     def destroy
-        if current_user == Team.find(params[:id]).user
-            Team.find(params[:id]).destroy
-            redirect_to user_path(current_user)
-        else
-            redirect_to user_path(current_user)
-            flash[:error] = "You must be the owner of the team to edit or delete"
-        end
+        @team = find_team
+        @team.destroy
+        redirect_to user_path(current_user)
     end
 
     private
@@ -53,7 +45,13 @@ class TeamsController < ApplicationController
         end
 
         def users_team
-            redirect_to user_path(current_user) unless current_user == User.find(params[:user_id])
+            unless current_user == find_team.user
+                redirect_to user_path(current_user)
+                flash[:error] = "Only the owner can add, edit, or delete a team!"
+            end
         end
 
+        def find_team
+            Team.find(params[:id])
+        end
 end
