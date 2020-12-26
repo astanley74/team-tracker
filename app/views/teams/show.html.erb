@@ -6,7 +6,7 @@
 </ul>
 
 <h2>Players:</h2><br>
-<% @team.players.each do |player| %>
+<% @team.players.order_by_number.each do |player| %>
     <ul>
         <li><h3><%= link_to name_and_number(player), team_player_path(@team, player)%></h3></li>
     </ul>

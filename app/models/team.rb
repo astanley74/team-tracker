@@ -9,9 +9,9 @@ class Team < ActiveRecord::Base
 
     accepts_nested_attributes_for :players
 
-    # def self.order_by_name
-    #     order(name: :desc)
-    # end
+    def self.order_by_name
+        order(name: :desc)
+    end
 
-    scope :order_by_name, -> { order(name: :desc) }
+    # scope :order_by_name, -> { order(name: :desc) }
 end
