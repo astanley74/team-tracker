@@ -1,4 +1,4 @@
-class Player < ActiveRecord::Base
+class Player < ApplicationRecord
     belongs_to :team
     validates_presence_of :name, :number, :hometown
     validates :name, uniqueness: true
