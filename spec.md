@@ -14,7 +14,8 @@ Specs:
     - Team is the join table and allows the user to submit the city, name and coach for the team. 
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
     - Included validations for User model, Player model, and Team model
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+    - Created a scope method for the team model that sorts the teams in alphabetical order. Creaed another scope method for the player model that sorts the players by their number in ascending order.
 - [x] Include signup
     - User can signup
 - [x] Include login
@@ -31,7 +32,10 @@ Specs:
     - Included form display of validation errors for creating a new user, team and player. Also for editing a user, team or player
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+    - extrated things into methods if I found myself repeating things
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate
+    - Used helper methods in views when needed
+- [x] Views use partials if appropriate
+    - Used partials for creating a new user, as well as creating a new player and editing a player.
