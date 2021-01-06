@@ -1,5 +1,5 @@
 class Team < ApplicationRecord
-    has_many :players
+    has_many :players, dependent: :destroy
     belongs_to :user
     belongs_to :league
 

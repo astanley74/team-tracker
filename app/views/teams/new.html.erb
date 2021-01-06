@@ -15,7 +15,7 @@
     <%= f.collection_select :league_id, League.all, :id, :name %><br><br>
 
     <h2>Players</h2>
-    <% 4.times do %>
+    <% 3.times do %>
         <%= f.fields_for :players, @team.players.build do |player| %>
 
             <%= player.label :name %>
