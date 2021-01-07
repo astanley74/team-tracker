@@ -8,7 +8,9 @@ class PlayersController < ApplicationController
     end
 
     def create
-        if @player = Player.create(player_params)
+        @player = Player.create(player_params)
+
+        if @player.save
             redirect_to team_player_path(@player.team, @player)
         else
             render :new
