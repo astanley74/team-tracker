@@ -17,6 +17,10 @@ class TeamsController < ApplicationController
         end
     end
 
+    def all_teams
+        @teams = Team.same_city
+    end
+
     def show
         @team = find_team
     end

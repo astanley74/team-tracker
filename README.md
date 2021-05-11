@@ -14,16 +14,24 @@ This rails app was created to help owners of sports teams create and manage thei
 
 ## Installation
 
-    $ git clone git@github.com:astanley74/team-tracker.git
-    $ cd team-tracker
+    $ git clone git@github.com:astanley74/tech_reviewer_js_spa.git
+    $ cd tech_reviewer_js_spa
+    $ cd tech_reviewer_backend
     $ bundle install
-    $ rake db:migrate
-    $ rake db:seed
+    $ rails db:migrate
+    $ rails db:seed
 
 ## Run the server
 
-    $ rake db:seed
+    $ rails s
+
+## Open the html file
+    $ cd tech_reviewer_frontend
+    $ open index.html
+
+## Demo
+[Application Walkthrough](https://www.youtube.com/watch?v=8OtsZrZ3ZPE&t=14s)
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/astanley74/team-tracker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/astanley74/team-tracker/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/astanley74/tech_reviewer_js_spa. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/astanley74/team-tracker/blob/master/CODE_OF_CONDUCT.md).
