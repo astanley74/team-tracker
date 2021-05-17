@@ -14,20 +14,18 @@ This rails app was created to help owners of sports teams create and manage thei
 
 ## Installation
 
-    $ git clone git@github.com:astanley74/tech_reviewer_js_spa.git
-    $ cd tech_reviewer_js_spa
-    $ cd tech_reviewer_backend
+    $ git clone git@github.com:astanley74/team-tracker.git
+    $ cd team-tracker
     $ bundle install
-    $ rails db:migrate
-    $ rails db:seed
+    $ rake db:migrate
+    $ rake db:seed
 
 ## Run the server
 
     $ rails s
 
-## Open the html file
-    $ cd tech_reviewer_frontend
-    $ open index.html
+## Navigate to webpage
+    $ http://localhost:3000
 
 ## Demo
 [Application Walkthrough](https://www.youtube.com/watch?v=8OtsZrZ3ZPE&t=14s)
